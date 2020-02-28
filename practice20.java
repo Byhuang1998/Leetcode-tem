@@ -13,7 +13,7 @@ public class practice20 {
 				pointer++;
 				continue;
 			}
-			if (len != 0 && flag(s.charAt(pointer))<0) return false;
+			if (len != 0 && flag(s.charAt(pointer))<0 && pointer==0) return false;
 			if (flag(s.charAt(pointer))<0 && wait(s.charAt(pointer-1)) != s.charAt(pointer)) {
 				//System.out.println(wait(s.charAt(pointer-1)));
 				//System.out.println(s.charAt(pointer));
@@ -64,7 +64,7 @@ public class practice20 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		practice20 p = new practice20();
-		String str = "[]{]]]";
+		String str = "[][[";
 		boolean x = p.isValid(str);
 		System.out.println(x);
 		
