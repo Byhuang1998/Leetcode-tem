@@ -27,5 +27,4 @@ public class practice35 {
  		int res = p.searchInsert(nums, target);
  		System.out.println(res);
 	}
-
 }
