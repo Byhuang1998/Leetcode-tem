@@ -11,9 +11,10 @@ public class practice121 {
 			int temProfit = 0; // 本次循环的最大利润
 			int tem = prices[i]; // 买入价
 			int temNum = prices[i+1];
-			temMax = temNum>temMax ? temNum : temMax;
+			// 由后往前，只需比较新加入的值与来的最大值，则可得出新的最大值，不需要重复进行一次比较
+			temMax = temNum>temMax ? temNum : temMax; 
 			temProfit = temMax>tem ? temMax - tem : 0;
-			profit = temProfit>profit ? temProfit : profit;
+			profit = temProfit>profit ? temProfit : profit; // 将新得的利润与原始利润比较，更新
 		}
 		return profit;
 	}
