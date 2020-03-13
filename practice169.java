@@ -11,15 +11,16 @@ public class practice169 {
 		int size = list.size();
 		int record = 0;
 		int ans = 0;
-		for (int i=0; i<size; i++) {
+		sign: for (int i=0; i<size; i++) {
 			int count = 0;
 			for (int j=0; j<len; j++) {
 				if (nums[j] == list.get(i)) count++;
 			}
-			if (count>record) {
+			if (count>len/2) {
 				record = count;
 				index = i;
 				ans = list.get(i);
+				break sign;
 			}
 		}
 		return ans;
@@ -27,7 +28,7 @@ public class practice169 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		practice169 p = new practice169();
-		int[] nums = {3,2,3};
+		int[] nums = {4,4,4,5,5,5,5};
 		int ans = p.majorityElement(nums);
 		System.out.println(ans);
 
