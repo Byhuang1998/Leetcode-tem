@@ -24,6 +24,7 @@ public class practice994 {
 				}
 			}
 		}
+		// 队列不为空时，说明当前还有腐烂的橘子，可以感染附近的橘子
 		while (!q_i.isEmpty()) {
 			int cur_i = q_i.poll();
 			int cur_j = q_j.poll();
@@ -31,16 +32,20 @@ public class practice994 {
 			for (int k=0; k<4; k++) {
 				int tem_i = cur_i + ii[k];
 				int tem_j = cur_j + jj[k];
+				// 判断附近如果未越界，且是新鲜的，那么将被感染
+				// 将其置为2，并加入HashMap与队列
+				// 直至队列为空
 				if (tem_i>=0 && tem_i<row && tem_j>=0 && tem_j<col && grid[tem_i][tem_j]==1) {
 					grid[tem_i][tem_j] = 2;
 					int ncode = tem_i * col + tem_j;
 					map.put(ncode, map.get(code)+1);
 					q_i.offer(tem_i);
 					q_j.offer(tem_j);
-					time = map.get(ncode);
+					time = map.get(ncode); // 更新时间
 				}
 			}
 		}
+		// 若仍有新鲜的橘子，说明最终不能感染，返回-1
 		for (int i=0; i<row; i++) {
 			for (int j=0; j<col; j++) {
 				if (grid[i][j] == 1) return -1; 
