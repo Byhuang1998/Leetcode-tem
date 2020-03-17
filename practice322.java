@@ -9,6 +9,7 @@ public class practice322 {
 		for (int money=1; money<=amount; ++money) {
 			for (int coinId=0; coinId<len; ++coinId) {
 				if (money>=coins[coinId]) {
+					// 如果dp[money-coins[coinId]]没有匹配的值，他们取二者最小，依然是Integer.MAX_VALUE
 					dp[money] = Math.min(dp[money], dp[money-coins[coinId]]+1);
 				}
 			}
@@ -20,7 +21,7 @@ public class practice322 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[] coins = {3,5,10};
-		int amount = 16;
+		int amount = 7;
 		practice322 p = new practice322();
 		int res = p.coinChange(coins, amount);
 		System.out.println(res);
