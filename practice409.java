@@ -1,26 +1,20 @@
-import java.util.HashMap;
+
 public class practice409 {
 
 	public int longestParlindrome(String s) {
 		int len = s.length();
 		if (len==0 || len==1) return len;
-		int flag = 0;
-		HashMap<Character, Integer> map = new HashMap<>();
 		int res = 0;
-		for (int i=0; i<len; ++i) {
-			char cur = s.charAt(i);
-			if (!map.containsKey(cur)) map.put(cur, 1);
-			else map.put(cur, map.get(cur)+1);
-		}
-		for (char cur: map.keySet()) {
+		int flag = 0;
+		int[] map = new int[123];
+		for (char cur : s.toCharArray()) map[cur]++;
+		for (int num : map) {
 			// 奇数
-			if (map.get(cur)%2!=0) {
-				res+=map.get(cur)-1;
-				flag = 1; // 如果存在奇数，则最后必定要加上一个数，作为最中间的数
-			}
-			else res+=map.get(cur);
+			if (num%2 != 0) {
+				res += num-1;
+				flag =1;
+			} else res += num; // 偶数
 		}
-		
 		return res+flag;
 	}
 	public static void main(String[] args) {
