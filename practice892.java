@@ -10,12 +10,11 @@ public class practice892 {
 			for (int j=0; j<col; ++j) {
 				if (grid[i][j] > 0) {
 					ans += 4 * grid[i][j] + 2;
-					ans = i > 0 ? ans-Math.min(grid[i][j], grid[i-1][j]) * 2 : ans;
-					ans = j > 0 ? ans-Math.min(grid[i][j], grid[i][j-1]) * 2 : ans;
+					ans -= i > 0 ? Math.min(grid[i][j], grid[i-1][j]) * 2 : 0;
+					ans -= j > 0 ? Math.min(grid[i][j], grid[i][j-1]) * 2 : 0;
 				}
 			}
 		}
-		
 		return ans;
 	}
 	public static void main(String[] args) {
