@@ -43,7 +43,7 @@ public class practice1162 {
 				if (ni>=0 && ni<N && nj>=0 && nj<N && grid[ni][nj]==0 && flag[ni][nj]==0) {
 					int npos = ni * N + nj;
 					q_pos.offer(npos);
-					map[npos] = Math.min(map[npos], map[cur_pos] + 1);
+					map[npos] = map[cur_pos] + 1;
 					max = Math.max(max, map[npos]);
 					flag[ni][nj] = 1;
 				}
@@ -65,7 +65,7 @@ public class practice1162 {
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[][] grid = {{0,0,0},{0,0,0},{0,0,0}};
+		int[][] grid = {{1,0,0},{0,0,0},{1,0,1}};
 		practice1162 p = new practice1162();
 	    int max = p.maxDistance(grid);
 	    System.out.println(max);
