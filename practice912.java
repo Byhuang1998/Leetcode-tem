@@ -1,5 +1,4 @@
 import java.util.Arrays;
-
 public class practice912 {
 
 	// Ã°ÅİÅÅĞò
@@ -38,13 +37,40 @@ public class practice912 {
 		
 		return nums;
 	}
+	
+	// ¹é²¢Ëã·¨
+	public int[] merge(int[] nums) {
+		int len = nums.length;
+		
+		
+		return nums;
+	}
+	
+	// ¼ÆÊıÅÅĞò
+	public int[] count(int[] nums) {
+		int[] count = new int[1000];
+		int len = nums.length;
+		for (int i=0; i<len; ++i) {
+			count[nums[i]] ++;
+		}
+		int pointer = 0;
+		for (int i=0; i<1000; ++i) {
+			if (count[i] != 0) {
+				int n = count[i];
+				for (int j=0; j<n; ++j) {
+					nums[pointer] = i;
+					pointer ++;
+				}
+			}
+		}
+		return nums;
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[] nums = {6,5,4,3,2,1,2,5,9,8,7};
 		practice912 p = new practice912();
-		int[] ans = p.select(nums);
+		int[] ans = p.count(nums);
 		System.out.println(Arrays.toString(ans));
-
 	}
 
 }
