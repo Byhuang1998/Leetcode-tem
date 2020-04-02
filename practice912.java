@@ -65,12 +65,41 @@ public class practice912 {
 		}
 		return nums;
 	}
+	
+	// ¿ìËÙÅÅÐò
+	public void quick(int[] nums, int left, int right) {
+		if (left >= right) return;
+		int pivot = nums[left];
+		int i = left;
+		int j = right;
+		while (i != j) {
+			while (j > i) {
+				if (nums[j] >= pivot) {
+					j--;
+				}else {
+					nums[i] = nums[j];
+					break;
+				}
+			}
+			while (i < j) {
+				if (nums[i] <= pivot) {
+					i ++;
+				} else {
+					nums[j] = nums[i];
+					break;
+				}
+			}
+		}
+		nums[i] = pivot;
+		this.quick(nums, left, i-1);
+		this.quick(nums, i+1, right);
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[] nums = {6,5,4,3,2,1,2,5,9,8,7};
+		int[] test = {6,5,4,3,2,1,2,5,9,8,7};
 		practice912 p = new practice912();
-		int[] ans = p.count(nums);
-		System.out.println(Arrays.toString(ans));
+		p.quick(test, 0, test.length-1);
+		System.out.println(Arrays.toString(test));
 	}
-
 }
