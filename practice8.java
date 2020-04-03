@@ -12,8 +12,9 @@ public class practice8 {
 		int index = 0;
 		int flag = 1;
 		int ans = 0;
-		while (index < str.length()) {
-			char c = str.charAt(index);
+		char[] s = str.toCharArray();
+		while (index < s.length) {
+			char c = s[index];
 			state = map.get(state)[jump(c)];
 			index ++;
 			if (state == "END") break;
@@ -38,7 +39,7 @@ public class practice8 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		practice8 p = new practice8();
-		int ans = p.myAtoi("  w -999");
+		int ans = p.myAtoi(" -999");
 		System.out.println(ans);
 
 	}
