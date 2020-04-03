@@ -9,8 +9,6 @@ public class practice118 {
         if (numRows == 1) return ans;
         List<Integer> second = new ArrayList<>(); second.add(1); second.add(1);
         ans.add(second);
-        if (numRows == 2) return ans;
-        //System.out.println(ans.get(0));
         for (int i=2; i<numRows; ++i) {
         	List<Integer> cur = new ArrayList<>();
         	cur.add(1);
@@ -28,8 +26,8 @@ public class practice118 {
 		// TODO Auto-generated method stub
 		practice118 p = new practice118();
 		List<List<Integer>> ans = new ArrayList<List<Integer>>();
-		ans = p.generate(5);
-		for (int i=0; i<5; i++) {
+		ans = p.generate(2);
+		for (int i=0; i<2; i++) {
 			System.out.println(ans.get(i));
 		}
 	}
