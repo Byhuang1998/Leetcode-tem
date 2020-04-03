@@ -1,34 +1,44 @@
-
+import java.util.HashMap;
 public class practice8 {
 
 	public int myAtoi(String str) {
-		int pointer = 0;
-		// Ìø¹ý¿Õ¸ñ
-		while (pointer < str.length() && str.charAt(pointer) == ' ') pointer++;
-		boolean negtive = false;
-		if (pointer == str.length()) return 0;
-		else if (str.charAt(pointer) == '-') {
-			negtive = true;
-			pointer ++;
-		}
-		else if (str.charAt(pointer) == '+') {
-			pointer ++;
-		}
-		else if (str.charAt(pointer) > '9' || str.charAt(pointer) < '0') return 0;
+		HashMap<String, String[]> map = new HashMap<>();
+		map.put("START", new String[] {"START","SIGNED","IN_NUM","END"});
+		map.put("SIGNED", new String[] {"END","END","IN_NUM","END"});
+		map.put("IN_NUM", new String[] {"END","END","IN_NUM","END"});
+		map.put("END", new String[] {"END","END","END","END"});
+		String state = "START";
+		
+		int index = 0;
+		int flag = 1;
 		int ans = 0;
-		while (pointer < str.length() && '0' <= str.charAt(pointer) && str.charAt(pointer) <= '9') {
-			int digit = str.charAt(pointer) - '0';
-			if (ans > (Integer.MAX_VALUE - digit) / 10) 
-				return negtive ? Integer.MIN_VALUE : Integer.MAX_VALUE;
-			ans = ans * 10 + digit;
-			pointer ++;
+		while (index < str.length()) {
+			char c = str.charAt(index);
+			state = map.get(state)[jump(c)];
+			index ++;
+			if (state == "END") break;
+			else if (state == "SIGNED" && c == '-') flag = -1;
+			else if (state == "IN_NUM") {
+				int digit = c - '0';
+				if (ans > (Integer.MAX_VALUE - digit) / 10) 
+					return flag == -1 ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+				ans = ans * 10 + digit;
+			}
+			else continue;
 		}
-		return negtive ? -ans : ans;
+		return flag * ans;
+	}
+	
+	private int jump(char c) {
+		if (c == ' ') return 0;
+		else if (c == '+' || c == '-') return 1;
+		else if (c >= '0' && c <= '9') return 2;
+		else return 3;
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		practice8 p = new practice8();
-		int ans = p.myAtoi("2147483648");
+		int ans = p.myAtoi("  w -999");
 		System.out.println(ans);
 
 	}
