@@ -1,43 +1,53 @@
+// small test for practice 445
+import java.util.Stack;
 
-import java.util.HashMap;
-class TireNode {
-	int count = 0;
-	TireNode[] children = new TireNode[26];
-	public TireNode get(char c) {
-		if (children[c-'a'] == null) {
-			children[c-'a'] = new TireNode();
-			count ++;
-		}
-		return children[c-'a'];
-	}
-}
 
 public class test {
-	public int minimumLengthEncoding(String[] words) {
-		int ans = 0;
-		HashMap<TireNode, Integer> map = new HashMap<>();
-		int num = words.length;
-		TireNode root = new TireNode();
-		for (int i=0; i<num; ++i) {
-			TireNode cur_root = root;
-			String word = words[i];
-			for (int j=word.length()-1; j>=0; --j) {
-				cur_root = cur_root.get(word.charAt(j));
-			}
-			map.put(cur_root, i);
+	class LinkNode {
+		int val;
+		LinkNode next;
+		LinkNode(int x) {
+			val = x;
 		}
-		for (TireNode tn : map.keySet()) {
-			if (tn.count == 0) ans += words[map.get(tn)].length() + 1;
+	}
+	
+	
+	public LinkNode addTwoNumbers(LinkNode l1, LinkNode l2) {
+		Stack<LinkNode> s1 = new Stack<>();
+		Stack<LinkNode> s2 = new Stack<>();
+		while (l1 != null) {
+			s1.push(l1);
+			l1 = l1.next;
 		}
-		return ans;
+		while (l2 != null) {
+			s2.push(l2);
+			l2 = l2.next;
+		}
+		int carry = 0;
+		LinkNode tail = null;
+		while (! s1.isEmpty() || ! s2.isEmpty() || carry != 0) {
+			int sum = carry;
+			sum += s1.isEmpty() ? 0 : s1.pop().val;
+			sum += s2.isEmpty() ? 0 : s2.pop().val;
+			LinkNode nLN = new LinkNode(sum % 10);
+			carry = sum / 10;
+			nLN.next = tail;
+			tail = nLN;
+		}
+		
+		return tail;
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		test p = new test();
-
-		String[] ss = {"time", "me", "bell"};
-		int len = p.minimumLengthEncoding(ss);
-		System.out.println(len);
+		test t = new test();
+    	LinkNode l1 = t.new LinkNode(0);
+    	LinkNode l2 = t.new LinkNode(7);
+    	l2.next = t.new LinkNode(3);
+    	LinkNode ans = t.addTwoNumbers(l1, l2);
+    	while (ans != null) {
+    		System.out.println(ans.val);
+    		ans = ans.next;
+    	}
 
 	}
 
