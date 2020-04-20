@@ -1,5 +1,6 @@
 import java.util.Queue;
 import java.util.LinkedList;
+import java.util.Stack;
 public class practice200 {
 	    public boolean isClear(char[][] grid, int row, int col) {
 	        for (int i=0; i<row; i++) {
@@ -24,8 +25,8 @@ public class practice200 {
 	        return pos;
 	    }
 	    public int numIslands(char[][] grid) {
-	        Queue<Integer> si = new LinkedList<>();
-	        Queue<Integer> sj = new LinkedList<>();
+	        Stack<Integer> si = new Stack<>();
+	        Stack<Integer> sj = new Stack<>();
 	        int[] ii = {-1, 1, 0, 0};
 	        int[] jj = {0, 0, -1, 1};
 	        int row = grid.length;
@@ -36,20 +37,20 @@ public class practice200 {
 	            count++;
 	            int m = getLand(grid, row, col)[0];
 	            int n = getLand(grid, row, col)[1];
-	            si.offer(m);
-	            sj.offer(n);
+	            si.push(m);
+	            sj.push(n);
 	            grid[m][n] = '0';
 	            while (! si.isEmpty()) {
-	                int x = si.poll();
-	                int y = sj.poll();
+	                int x = si.pop();
+	                int y = sj.pop();
 	                for (int k=0; k<4; k++) {
 	                    int ni = x + ii[k];
 	                    int nj = y + jj[k];
 	                    // ÒÀÈ»ÊÇÂ½µØ
 	                    if (ni>=0 && ni<row && nj>=0 && nj<col && grid[ni][nj]=='1') {
 	                        grid[ni][nj] = '0';
-	                        si.offer(ni);
-	                        sj.offer(nj);
+	                        si.push(ni);
+	                        sj.push(nj);
 	                    }
 	                }
 	            }
