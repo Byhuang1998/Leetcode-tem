@@ -38,12 +38,12 @@ public class practice912 {
 		return nums;
 	}
 	
-	// 归并算法
-	public int[] merge(int[] nums) {
-		int len = nums.length;
+	// 归并排序
+	public void merge(int[] nums, int left, int right) {
+		
+		return;
 		
 		
-		return nums;
 	}
 	
 	// 计数排序
@@ -96,7 +96,7 @@ public class practice912 {
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] nums = {6,5,4,3,2,1,2,5,9,8,7};
+		//int[] nums = {6,5,4,3,2,1,2,5,9,8,7};
 		int[] test = {6,5,4,3,2,1,2,5,9,8,7};
 		practice912 p = new practice912();
 		p.quick(test, 0, test.length-1);
