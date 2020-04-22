@@ -21,7 +21,6 @@ public class practice21 {
 	            l2.next = mergeTwoLists(l1, l2.next);
 	            return l2;
 	        }
-
 	    }
 	
 
@@ -41,5 +40,4 @@ public class practice21 {
 			l = l.next;
 		}
 	}
-
 }
