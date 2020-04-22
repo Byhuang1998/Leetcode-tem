@@ -66,6 +66,8 @@ public class practice460 {
 
 }
 /*
+ * 211 -1 3
+ 
 ["LFUCache","put","put","get","get","put","get","get","get"]
 [[2],[2,1],[3,2],[3],[2],[4,3],[2],[3],[4]]
 */
