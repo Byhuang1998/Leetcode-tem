@@ -11,7 +11,6 @@ public class practice1103 {
     		i++;
     		candies -= next;
     	}
-    	
     	return res;
     }
     
