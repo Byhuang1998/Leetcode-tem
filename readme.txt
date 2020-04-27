@@ -1,6 +1,3 @@
-
-package programmingTest;
-
 import java.util.Scanner;
 
 public class Main {
