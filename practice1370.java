@@ -3,44 +3,30 @@ import java.util.Arrays;
 public class practice1370 {
 
 	public String sortString(String s) {
+		int len = s.length();
 		char[] sc = s.toCharArray();
-		boolean[] isVisit = new boolean[s.length()];
-		Arrays.sort(sc);
-		String res = "";
-		
-		while (notEnd(isVisit)) {
-			int i = 0, j = sc.length - 1;
-			char tem = '0';
-			while (i < sc.length) {
-				if (sc[i] != tem && isVisit[i] == false) {
-					res += sc[i];
-					isVisit[i] = true;
-					tem = sc[i];
-					i++;
-				} else {
-					i++;
+		int[] letter = new int[26];
+		for (char c : sc) {
+			letter[c - 'a']++;
+		}
+		char[] ans = new char[len];
+		int index = 0;
+		while (index < len) {
+			for (int i=0; i<26; ++i) {
+				if (letter[i] != 0) {
+					ans[index++]= (char)(i + 'a');
+					letter[i]--;
 				}
 			}
-			tem = '0';
-			while (j >= 0) {
-				if (sc[j] != tem && isVisit[j] == false) {
-					res += sc[j];
-					isVisit[j] = true;
-					tem = sc[j];
-					j--;
-				} else {
-					j--;
+			for (int i=25; i>=0; i--) {
+				if (letter[i] != 0) {
+					ans[index++] = (char)(i + 'a');
+					letter[i]--;
 				}
+				
 			}
 		}
-		return res;
-	}
-	
-	public boolean notEnd(boolean[] isVisit) {
-		for (boolean b : isVisit) {
-			if (b == false) return true;
-		}
-		return false;
+		return new String(ans);
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
