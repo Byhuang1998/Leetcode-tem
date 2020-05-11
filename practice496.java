@@ -1,26 +1,26 @@
+
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 
 public class practice496 {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums2.length; i++) {
-            map.put(nums2[i], i);
-        
-        }
-        int[] res = new int[nums1.length];
-        for (int i = 0; i < nums1.length; i++) {
-            res[i] = getIndex(nums2, map, nums1[i]);
-        }
-        return res;
-    }
-    private int getIndex(int[] nums2, Map<Integer, Integer> map, int target) {
-        for (int i = map.get(target) + 1; i < nums2.length; i++) {
-            if (nums2[i] > target) {
-                return nums2[i];
-            }
-        }
-        return -1;
+    	Stack<Integer> s = new Stack<>();
+    	Map<Integer, Integer> map = new HashMap<>();
+    	for (int i = 0; i < nums2.length; i++) {
+			while (! s.isEmpty() && nums2[i] > s.peek()) {
+				map.put(s.pop(), nums2[i]);
+			}
+			s.push(nums2[i]);
+		}
+    	while (! s.isEmpty()) {
+    		map.put(s.pop(), -1);
+    	}
+    	int[] res = new int[nums1.length];
+    	for (int i = 0; i < nums1.length; i++) {
+			res[i] = map.get(nums1[i]);
+		}
+    	return res;    	
     }
 
 	public static void main(String[] args) {
