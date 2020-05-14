@@ -17,6 +17,7 @@ class Solution {
         }
         cur.next = head;
         cur = head;
+	k = k % len; // 加上这一句后速度加快超多
         int r = len - k - 1;
         while (r < 0) {
             r += len;
