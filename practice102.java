@@ -12,26 +12,22 @@ class Solution {
         List<List<Integer>> res = new ArrayList<>();
         if (root == null) return res;
         Queue<TreeNode> q = new LinkedList<>();
-        Map<TreeNode, Integer> map = new HashMap<>();
-        List<Integer> list = new ArrayList<>();
         q.add(root);
-        map.put(root, 1);
         while (! q.isEmpty()) {
-            TreeNode cur = q.poll();
-            if (cur.left != null) {
-                q.add(cur.left);
-                map.put(cur.left, map.get(cur) + 1);
+            List<Integer> list = new ArrayList<>();
+            int size = q.size();
+            for (int i = 0; i < size; ++i) {
+                TreeNode cur = q.poll();
+                if (cur == null) {
+                    continue;
+                }
+                list.add(cur.val);
+                q.offer(cur.left);
+                q.offer(cur.right);
+
             }
-            if (cur.right != null) {
-                q.add(cur.right);
-                map.put(cur.right, map.get(cur) + 1);
-            }
-            list.add(cur.val);
-            if (q.isEmpty()) {
+            if (list.size() > 0) {
                 res.add(list);
-            } else if (map.get(q.peek()) != map.get(cur)) {
-                res.add(list);
-                list = new ArrayList<>();
             }
         }
         return res;
