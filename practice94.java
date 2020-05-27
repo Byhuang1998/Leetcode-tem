@@ -8,13 +8,19 @@
  * }
  */
 class Solution {
-    List<Integer> res = new LinkedList<>();
     public List<Integer> inorderTraversal(TreeNode root) {
-        if (root != null) {
-            inorderTraversal(root.left);
-            res.add(root.val);
-            inorderTraversal(root.right);
+        List<Integer> res = new LinkedList<>();
+        Stack<TreeNode> s = new Stack<>();
+        TreeNode cur = root;
+        while (cur != null || !s.isEmpty()) {
+            while (cur != null) {
+                s.push(cur);
+                cur = cur.left;
+            }
+            cur = s.pop();
+            res.add(cur.val);
+            cur = cur.right; // 这一句是妙处
         }
-    	return res;
+        return res;
     }
 }
