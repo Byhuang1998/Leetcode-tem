@@ -18,8 +18,8 @@ class Node {
 */
 
 class Solution {
-    List<List<Integer>> res = new ArrayList<>();
     public List<List<Integer>> levelOrder(Node root) {
+        List<List<Integer>> res = new ArrayList<>();
         if (root == null) return res;
         Queue<Node> q = new LinkedList<>();
         q.offer(root);
