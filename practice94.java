@@ -15,6 +15,6 @@ class Solution {
             res.add(root.val);
             inorderTraversal(root.right);
         }
-    return res;
+    	return res;
     }
 }
