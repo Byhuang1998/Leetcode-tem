@@ -8,32 +8,22 @@
  * }
  */
 class Solution {
-    List<Integer> nums = new ArrayList<>();
+    int sum = 0;
     public int rangeSumBST(TreeNode root, int L, int R) {
-        inorderSearch(root);
-        int sum = 0;
-        for (int i = 0; i < nums.size(); ++i) {
-            int n = nums.get(i);
-            if (L <= n && n <= R) {
-                sum += n;
-            }
-        }
+        helper(root, L, R);
         return sum;
     }
-
-    private void inorderSearch(TreeNode root) {
+    public void helper(TreeNode root, int L, int R) {
         if (root == null) return;
-        Stack<TreeNode> s = new Stack<>();
-        TreeNode cur = root;
-        while (cur != null || !s.isEmpty()) {
-            while (cur != null) {
-                s.push(cur);
-                cur = cur.left;
-            }
-            cur = s.pop();
-            nums.add(cur.val);
-            cur = cur.right;
-        }
-
+        if (root.val < L) {
+            helper(root.right, L, R);
+        } else if (root.val > R) {
+            helper(root.left, L, R);
+        } else {
+            sum += root.val;
+            helper(root.left, L, R);
+            helper(root.right, L, R);
+        } 
+        return;
     }
 }
