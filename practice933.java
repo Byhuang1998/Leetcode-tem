@@ -6,7 +6,9 @@ class RecentCounter {
     
     public int ping(int t) {
         q.offer(t);
-        while (!q.isEmpty() && q.peek() < t - 3000) {
+	// 下面的while循环判断条件不需要!q.isEmpty()，因为q.peek()在空队列中会返回false
+	// 而不是报错
+        while (q.peek() < t - 3000) {
             q.poll();
         }
         return q.size();
