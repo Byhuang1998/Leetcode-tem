@@ -47,5 +47,3 @@ public class Main {
     	return gcd(n, m%n);
     }
 }
-// this is a txt file.
-
