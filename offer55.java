@@ -8,28 +8,17 @@
  * }
  */
 class Solution {
-    public int maxDepth(TreeNode root) {
-        if (root == null) return 0;
-        Queue<TreeNode> q = new LinkedList<>();
-        q.offer(root);
-        int num = 1;
-        int depth = 0;
-        while (! q.isEmpty()) {
-            int nn = 0;
-            for (int i = 0 ; i < num; ++i) {
-                TreeNode cur = q.poll();
-                if (cur.left != null) {
-                    q.offer(cur.left);
-                    nn++;
-                }
-                if (cur.right != null) {
-                    q.offer(cur.right);
-                    nn++;
-                }
-            }
-            num = nn;
-            depth++;
+    public boolean isBalanced(TreeNode root) {
+        if (root == null) {
+            return true;
         }
-        return depth;
+        return Math.abs(depth(root.left) - depth(root.right)) <= 1 && isBalanced(root.left) && isBalanced(root.right);
+    }
+
+    private int depth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return Math.max(depth(root.left), depth(root.right)) + 1;
     }
 }
