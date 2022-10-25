@@ -7,7 +7,10 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
-class Solution {
+import java.util.LinkedList;
+import java.util.Queue;
+import javafx.util.Pair;
+class practice104 {
     public int maxDepth(TreeNode root) {
         Queue<Pair<TreeNode, Integer>> q = new LinkedList<>();
         int ans = 0;

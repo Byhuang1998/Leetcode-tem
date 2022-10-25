@@ -1,6 +1,4 @@
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
 
 public class practice1030 {
 
@@ -17,31 +15,26 @@ public class practice1030 {
 
 	private int[][] allCellsDistOrder(int R, int C, int r0, int c0) {
 		// TODO Auto-generated method stub
-		int[][] res = new int[R * C][];
-		boolean[][] isVisit = new boolean[R][C];
-		int index = 0;
-		res[index++] = new int[] {r0,c0};
-		isVisit[r0][c0] = true;
-		Queue<Integer> x = new LinkedList<>();
-		Queue<Integer> y = new LinkedList<>();
-		int[] ii = {-1,1,0,0}, jj = {0,0,-1,1};
-		x.offer(r0);
-		y.offer(c0);
-		while (! x.isEmpty()) {
-			int cur_x = x.poll();
-			int cur_y = y.poll();
-			for (int i = 0; i < 4; i++) {
-				int nx = cur_x + ii[i];
-				int ny = cur_y + jj[i];
-				if (nx >= 0 && nx < R && ny >= 0 && ny < C && isVisit[nx][ny] == false) {
-					res[index++] = new int[] {nx, ny};
-					isVisit[nx][ny] = true;
-					x.offer(nx);
-					y.offer(ny);
-				}
+		int[][] res = new int[R * C][2];
+		for (int i = 0; i < R; i++) {
+			for (int j = 0; j < C; j++) {
+				int index = i * C + j;
+				res[index][0] = i;
+				res[index][1] = j;
 			}
 		}
+		Arrays.sort(res, (o1, o2) -> {
+			int d1 = dist(o1[0], o1[1], r0, c0);
+			int d2 = dist(o2[0], o2[1], r0, c0);
+			return Integer.compare(d1, d2);
+		});
 		return res;
+	}
+
+
+	private int dist(int i, int j, int r0, int c0) {
+		// TODO Auto-generated method stub
+		return Math.abs(i - r0) + Math.abs(j - c0);
 	}
 
 }

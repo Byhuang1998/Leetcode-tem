@@ -13,6 +13,7 @@ public class offer54 {
             }
             cur = s.pop();
             ans = cur.val;
+            
             index++;
             cur = cur.left;
         }

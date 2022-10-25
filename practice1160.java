@@ -34,9 +34,7 @@ public class practice1160 {
 				}
 			}
 			res += count;
-				
 		}
-		
 		return res;
 	}
 	public static void main(String[] args) {

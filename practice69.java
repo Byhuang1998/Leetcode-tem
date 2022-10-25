@@ -3,16 +3,25 @@ public class practice69 {
 
 	public int mySqrt(int x) {
 		if (x < 2) return x;
-		for (long i=1; i<=x/2; ++i) {
-			// 这样会有溢出,i用long型
-			if (i*i<=x && (i+1)*(i+1)>x) return (int)i;
+		int left = 2;
+		int right = x/2;
+		int mid;
+		int flag=0;
+		while (left<right) {
+			flag = left + right;
+			mid = (left+right)/2;
+			long num = mid * mid;
+			if (num<x) left = mid;
+			else if (num > x) right = mid-1;
+			else return mid;
+			if (flag == left + right) break; // 左右未更新
 		}
-		return 0;
+		return left;
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		practice69 p = new practice69();
-		int ans = p.mySqrt(2147395600);
+		int ans = p.mySqrt(17);
 		System.out.println(ans);
 		
 	}

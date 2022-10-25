@@ -38,13 +38,11 @@ public class practice46 {
 		int[] nums = {1, 2, 3};
 		practice46 p = new practice46();
 		List<List<Integer>> res = p.permute(nums);
-		System.out.println();
 		Iterator<List<Integer>> it = res.iterator();
 		while (it.hasNext()) {
 			List<Integer> list = it.next();
 			Iterator<Integer> ii = list.iterator();
 			while (ii.hasNext()) {
-				//int x = ;
 				System.out.print(ii.next() + " ");
 			}
 			System.out.println();

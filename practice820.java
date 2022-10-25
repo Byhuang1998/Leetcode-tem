@@ -79,7 +79,7 @@ public class practice820 {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String[] ss = {};
+		String[] ss = {"abcde","bcde","cde","de"};
 		practice820 p = new practice820();
 		int len = p.minimumLengthEncoding(ss);
 		System.out.println(len);

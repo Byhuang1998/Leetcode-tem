@@ -46,6 +46,7 @@ public class practice445 {
             nl2 = nl2 == null ? null : nl2.next;
         }
         ListNode ans = reverseList(head);
+        // 出现5+5这种情况，需要额外再进位一个0的情况
         if (flag == 1) {
         	ListNode res = new ListNode(1);
         	res.next = ans;

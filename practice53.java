@@ -10,9 +10,7 @@ public class practice53 {
 			else current+=nums[i];
 			if (current>res) res = current;
 		}
-		
 		return res;
-		
 	}
 	
 	

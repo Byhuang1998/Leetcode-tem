@@ -27,30 +27,30 @@ class Solution {
 /*
 ** 迭代的解法
 */
-class Solution {
-    public boolean isSymmetric(TreeNode root) {
-        if (root == null) return true;
-        Queue<TreeNode> q = new LinkedList<>();
-        q.offer(root.left);
-        q.offer(root.right);
-        while (! q.isEmpty()) {
-            TreeNode t1 = q.poll();
-            TreeNode t2 = q.poll();
-            if (t1 == null && t2 == null) {
-                continue;
-            } else if (t1 == null || t2 == null) {
-                return false;
-            } else {
-                if (t1.val != t2.val) {
-                    return false;
-                } else {
-                    q.offer(t1.left);
-                    q.offer(t2.right);
-                    q.offer(t1.right);
-                    q.offer(t2.left);
-                }
-            }
-        }
-        return true;
-    }
-}
+//class Solution {
+//    public boolean isSymmetric(TreeNode root) {
+//        if (root == null) return true;
+//        Queue<TreeNode> q = new LinkedList<>();
+//        q.offer(root.left);
+//        q.offer(root.right);
+//        while (! q.isEmpty()) {
+//            TreeNode t1 = q.poll();
+//            TreeNode t2 = q.poll();
+//            if (t1 == null && t2 == null) {
+//                continue;
+//            } else if (t1 == null || t2 == null) {
+//                return false;
+//            } else {
+//                if (t1.val != t2.val) {
+//                    return false;
+//                } else {
+//                    q.offer(t1.left);
+//                    q.offer(t2.right);
+//                    q.offer(t1.right);
+//                    q.offer(t2.left);
+//                }
+//            }
+//        }
+//        return true;
+//    }
+//}

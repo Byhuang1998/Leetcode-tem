@@ -1,4 +1,4 @@
-
+// 啊，这个方法太复杂了吧！！
 public class practice27 {
 	
 	public void sort(int[] nums) {
@@ -16,7 +16,6 @@ public class practice27 {
 			nums[i] = nums[index];
 			nums[index] = tem;
 		}
-
 	}
 	
 	public int removeElement(int[] nums, int val) {
